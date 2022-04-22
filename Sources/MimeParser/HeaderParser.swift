@@ -71,7 +71,6 @@ struct HeaderParser {
         if let field = fieldsByName[caseInsensitive: "Content-Transfer-Encoding"] {
             let parser = ContentTransferEncodingFieldParser()
             contentTransferEncoding = try parser.parse(field.body)
-            fields.remove(field)
         } else {
             contentTransferEncoding = nil
         }
@@ -80,7 +79,6 @@ struct HeaderParser {
         if let field = fieldsByName[caseInsensitive: "Content-Type"] {
             let parser = ContentTypeParser()
             contentType = try parser.parse(field.body)
-            fields.remove(field)
         } else {
             contentType = nil
         }
@@ -89,7 +87,6 @@ struct HeaderParser {
         if let field = fieldsByName[caseInsensitive: "Content-Disposition"] {
             let parser = ContentDispositionFieldParser()
             contentDisposition = try parser.parse(field.body)
-            fields.remove(field)
         } else {
             contentDisposition = nil
         }
